@@ -1,0 +1,608 @@
+ body {
+        margin: 0 !important;
+        font-family: Arial, sans-serif;
+        background-image: url("../assets/img/wood.png");
+        background-size: contain;
+    }
+
+body.gaming {
+    overflow:hidden;
+}
+
+    #leaderboardHeader, #scoreList .scoreItem {display:flex;}
+    #leaderboardHeader {background: rgba(0,0,0,0.6);}
+    #leaderboardHeader > div, #scoreList .scoreItem > div{width: 33%; border: 1px solid white; padding: 5px;}
+
+.displayEditorData, #mainMenu .selectedOption, #pauseMenu .selectedOption, .controlInfo, #objScore, #objNextLevel, #dataMenu .selectedOption, .highlightInfo {
+    font-weight: bold;
+    color:rgb(255, 255, 0);
+}
+
+#mainMenu .selectedOption, #pauseMenu .selectedOption, #gameInfo .controlInfo, #dataMenu .selectedOption {
+  font-size: 20px;
+}
+
+#gameInfo {
+    width:200px;
+}
+
+.controlInfo {
+    text-transform: uppercase;
+    font-size: 15px;
+}
+
+.customMenu > p {
+    margin:0px;
+    height:30px;
+    padding: 5px;
+}
+
+    .hide {display:none !important;}
+
+    #panel > div  {min-width: 340px;}
+
+    #playground, .previewPlayground, .previewCustomPlayground, .snakeEditorMap {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        /*background-size: contain;*/
+        position: relative;
+    }
+    #playground:before, .previewPlayground:before, .previewCustomPlayground:before, .snakeEditorMap:before {
+        background-image: url("../assets/img/grass.png");
+        /*background-size: contain;*/
+          content: "";
+        position: absolute;
+        top: 0; left: 0;
+        width: 100%; height: 100%;
+        z-index: -1;
+    }
+
+    #game.big #playground:not(.snakeEditorMap):before {box-shadow: inset 1px 3px 50px 1px red;}
+
+    #playground:before, .snakeEditorMap:before {
+        opacity: 0.85;
+    }
+    #playground, .snakeEditorMap {z-index: 2; background-color: rgb(255,255,255)}
+
+    .elemObjectInfo {
+  padding-top: 5px;
+  padding-bottom: 5px;
+}
+
+    #editorMsg, #editorDirect {position: absolute;background-color: rgba(0,0,0,0.6); color:white; padding:20px; font-size:17px; font-weight:bold; display:none;}
+    #dataMsg {background-color: rgba(0,0,0,0.6); color:white; padding:20px; font-size:17px; font-weight:bold; display:none;}
+    #editorDirect.show {display: block; width:calc(100% - 40px); text-align: center;}
+    #editorMsg.show, #dataMsg.show {display:block; z-index: 9;}
+    #editorMsg.success, #dataMsg.success {background-color: rgba(0,100,0,0.8); color:rgba(0,200,0,1);}
+    #editorMsg.successHighlight, #dataMsg.successHighlight {animation: successHighlight 1.5s;}
+    @keyframes successHighlight {
+        from {box-shadow: 0px 1px 5px 5px rgba(0,200,0,1);}
+        to   {box-shadow: 0px 1px 5px 5px rgba(0,200,0,0);}
+    }
+    #editorMsg.error, #dataMsg.error {background-color: rgba(100,0,0,0.8); color:rgba(255,0,0,1);}
+    #editorMsg.errorHighlight, #dataMsg.errorHighlight {animation: errorHighlight 1.5s;}
+    @keyframes errorHighlight {
+        from {box-shadow: 0px 1px 5px 5px rgba(255,0,0,1);}
+        to   {box-shadow: 0px 1px 5px 5px rgba(255,0,0,0);}
+    }
+    .limitMsg {font-size: 15px;
+        font-style: italic;
+        color: rgb(255, 167, 0);}
+
+    #game:not(.big) {height: 100vh;}
+    #game.big #info.close {transform:translateX(+100%); transition: 0.5s}
+    #game.big #score.close {transform:translateX(-100%); transition: 0.5s;}
+    
+    #game.big #info {transition: 0.5s}
+    #game.big #score {transition: 0.5s;}
+
+    #game.big #info, #game.big #score, #game.big #editorDirect, #game.big #editorMsg {
+        position: fixed;
+        z-index: 3;
+    }
+    #game.big #info {right: 0;}
+    #game.big #score {left:0;}
+    #game.big #editorDirect {bottom:0; left:0;}
+    #game.big #editorMsg {top:0; left: 0;}
+    #game:not(.big)  #infoControl {display: none;}
+
+    #levelSelectBlock {
+    	overflow-x:hidden;
+    }
+
+    .previewPlayground, .previewCustomPlayground {
+    	position:relative;
+    	background-size: contain;
+    	margin: 5px;
+        height: 100%;
+    }
+
+    .locked {
+    	width:100%;
+    	height:100%;
+    	background-color:rgba(0,0,0,0.7);
+    	position: absolute;
+    	background-image: url("../assets/img/lock.png");
+  		background-repeat: no-repeat;
+  		background-position: bottom;
+    }
+
+    .selectedPlayground {
+    	box-shadow: 0px 1px 5px 5px white;
+    }
+
+    #previewPlaygrounds, #previewCustomPlaygrounds {
+    	display:flex;
+    	flex-wrap: wrap;
+  		max-width: 280px;
+  		margin: 0 auto;
+        justify-content: flex-start;
+    }
+
+    #game {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    #score, .editSetting {
+        width: 200px;
+        background-color: rgba(0,0,0, 0.6);
+        color:white;
+        padding:10px;
+    }
+
+    #score .img, .editSetting .img {
+        width: 15px;
+  display: inline-block;
+  height: 15px;
+  margin: 0;
+  background-size: contain;
+    }
+
+    #newScoreName {
+        width: 100%;
+        box-sizing: border-box;
+        background-color: transparent;
+        border: none;
+        text-align: center;
+        color:white;
+    }
+
+    #playerPos {
+        background-color:rgba(200, 200, 0, 0.6);
+    }
+
+    .editSetting p {
+        display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-right:10px;
+}
+
+    #info, .snakeEditor {
+    	background-color: rgba(0,0,0, 0.6);
+        color:white;
+        padding:10px;
+    }
+    #info .img, .snakeEditor .img {
+    	width: 50px;
+  		display: block;
+  		height: 50px;
+    }
+
+    #intro .img, #outro .img, #optionsPanel .imgs {
+    	width: 25px;
+        height: 25px;
+    	display: inline-block;
+    }
+
+    .elemBlock {
+    	display:flex;
+    	align-items: center;
+    	margin: 10px auto;
+    }
+
+    .elemObject {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .elemObject:not(:last-child) {
+        border-bottom: 1px solid rgba(255,255,255,0.2);
+    }
+
+    .elemObjectHeader {
+        display: flex;
+        align-items: center;
+    }
+
+    .elemObjectInfo.hide  {
+        display: none;
+    }
+
+
+	.gameOption {
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+		margin: 15px 0;
+	}
+
+	.editButton {
+		padding: 5px;
+  		margin: 10px 0;
+	}
+
+	#optionsPanel .gameOption.selectedOption {
+		background-color: rgba(255,255,255,0.2);
+	}
+
+	#editScreen {
+		width: 100%;
+  		height: 100%;
+  		position: absolute;
+  		top: 0;
+  		left: 0;
+  		background-color: rgba(0,0,0,0.6);
+  		display: flex;
+  		justify-content: center;
+  		align-items: center;
+  		flex-direction: column;
+	}
+
+	.buttonInfo {
+		margin:20px 0;
+		display: flex;
+	}
+
+	.volumebar, .volumebarbg {
+		height:25px;
+		width:200px;
+		border-radius:15px;
+	}
+
+	.volumebarbg {
+		margin-left: 15px;
+		background-color:rgba(255,255,255,0.3);
+		overflow: hidden;
+	}
+
+	.volumebar {
+		background-color: rgb(255, 255, 0);
+	}
+
+    #musicVolInfo, #soundVolInfo {
+        width: 40%;
+        opacity: 0;
+    }
+
+    #musicVolInfo.show, #soundVolInfo.show {
+        opacity: 1;
+    }
+
+    .offline, #optionsPanel.edit h3, #optionsPanel.edit .actionMsg.nav, #optionsPanel.edit .actionMsg.confirm, #optionsPanel.edit .actionMsg.restore {
+        opacity : 0.3;
+    }
+
+    #optionsPanel.edit .actionMsg.close, #optionsPanel:not(.edit) .actionMsg.cancel {
+        display:none;
+    }
+
+    .block {
+        width: 50px;
+        height: 50px;
+        border: 0px solid black;
+    }
+
+    .previewPlayground .block, .previewCustomPlayground .block {
+        width: 5px;
+        height: 5px;
+        border: 0px solid black;
+    }
+
+    .row {
+        display: flex;
+        border-left: 1px solid black;
+        border-right: 1px solid black;
+    }
+
+    .row:first-child {
+        border-top: 1px solid black;
+    }
+
+    .row:last-child {
+        border-bottom: 1px solid black;
+    }
+
+    .food {
+        background-image: url("../assets/img/apple.png");
+        background-size: contain;
+        background-repeat: no-repeat;
+    }
+
+    .foodLoc {
+        background-image: url("../assets/img/appleLoc.png");
+        background-size: contain;
+        background-repeat: no-repeat;
+    }
+
+    .disappearLoc {
+        background-image: url("../assets/img/disappear.png");
+        background-size: contain;
+        background-repeat: no-repeat;
+    }
+
+    .bonus {
+        background-image: url("../assets/img/bonus.png");
+        background-size: contain;
+        background-repeat: no-repeat;
+    }
+
+    .bonusLoc {
+        background-image: url("../assets/img/bonusLoc.png");
+        background-size: contain;
+        background-repeat: no-repeat;
+    }
+
+    .void {
+    	background-color:rgba(0,0,0,1);
+        
+    }
+
+    .editortmpvoid {
+        background-color:rgba(150,150,150,1);
+    }
+
+    .snakeEditorMap .block {
+        border: 1px solid black;
+    }
+
+    .editErase .block.snake, .editErase .block.void, .editErase .block.editortmpvoid, 
+    .editStart .block:not(.snake), 
+    .editVoid .block:not(.void), 
+    .editTmpvoid .block:not(.editortmpvoid) {
+        cursor: pointer;
+    }
+
+    .editErase .block.snake:hover, .editErase .block.void:hover, .editErase .block.editortmpvoid:hover, 
+    .editStart .block:not(.snake):hover, 
+    .editVoid .block:not(.void):hover, 
+    .editTmpvoid .block:not(.editortmpvoid):hover {
+        box-shadow: 0px 1px 5px 5px white;
+    }
+
+    .snakeEditor .elemBlock:not(.selectedElem) {
+        cursor:pointer;
+    }
+
+    .selectedElem {
+        color: gray;
+        filter: opacity(0.5);
+    }
+
+    .alert {
+    	background-color:rgba(255,0,0,1);
+    	opacity:1 !important;
+    }
+
+    .alert.off {
+    	background-color:rgba(255,0,0,0.5);
+    	opacity:0.5 !important;
+    }
+
+    .tmpvoid.off:not(.snake) {
+    	opacity:0;
+    }
+    .tmpvoid.off:not(.alert) {
+    	background-color:rgba(0,0,0,0);
+    }
+    .tmpvoid.snake:not(.off) {
+    	background-image: none !important;
+    }
+
+    .actionMsg .pause_button, .actionMsg .left_button, .actionMsg .right_button, .actionMsg .cancel_button, .actionMsg .restore_button {
+        margin-left:10px;
+        margin-right:10px;
+    }
+
+    #gameData .instruction {
+        justify-content: center;
+    }
+    #gameData .instruction .controlInfo {
+        margin-left: 10px;
+        margin-right:10px;
+    }
+
+    #playPanel .instruction {
+        flex-direction: column;
+    }
+    #playPanel .instruction span:first-child {
+        margin-bottom:10px;
+    }
+
+    .instruction {
+    	display: flex;
+    	justify-content: space-between;
+    	align-items: center;
+    }
+
+    .head {
+        background-size: contain;
+        background-repeat: no-repeat;
+    }
+
+    .headLeft {
+    	background-image: url("../assets/img/snake/head_h.png");
+    }
+
+    .headRight {
+    	background-image: url("../assets/img/snake/head_h.png");
+    	transform:scaleX(-1);
+    }
+
+    .headUp {
+    	background-image: url("../assets/img/snake/head_v.png");
+    }
+
+    .headDown {
+    	background-image: url("../assets/img/snake/head_v.png");
+    	transform:scaleY(-1);
+    }
+
+    .tail {
+        background-size: contain;
+        background-repeat: no-repeat;
+    }
+
+    .tailUp {
+    	background-image: url("../assets/img/snake/tail_v.png");
+    	transform:scaleY(-1);
+    }
+
+    .tailDown {
+    	background-image: url("../assets/img/snake/tail_v.png");
+    	transform:scaleY(1);
+    }
+
+    .tailLeft {
+    	background-image: url("../assets/img/snake/tail_h.png");
+    	transform:scaleX(1);
+    }
+
+    .tailRight {
+    	background-image: url("../assets/img/snake/tail_h.png");
+    	transform:scaleX(-1);
+    }
+
+    .wall {
+        background-image: url("../assets/img/wall.png");
+        background-repeat: no-repeat;
+        background-size: 75px 55px;
+  		background-position: -15px;
+    }
+
+    .wallLoc {
+        background-image: url("../assets/img/wallLoc.png");
+        background-repeat: no-repeat;
+        background-size: contain;
+    }
+
+    .boom {
+        background-image: url("../assets/img/boom.png");
+        background-repeat: no-repeat;
+    }
+
+    #panel {
+        background-color: rgba(0, 0, 0, 0.3);
+        position: fixed;
+        width: 100%;
+        height: 100%;
+        color: white;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        z-index: 4;
+    }
+
+    #score hr, .editSetting hr {
+        margin-left: 0;
+    }
+
+    #resultHighscore {
+        display: none;
+    }
+
+    #editScreenSample {
+        margin-left: 5px;
+    }
+
+    #editScreen > .buttonInfo:last-child {
+        flex-direction: column;
+    }
+
+    #editScreen > .buttonInfo:last-child > span:first-child {
+        margin-bottom: 8px;
+    }
+
+    #editScreen > span {
+        font-weight: bold;
+    }
+
+    .actionMsg {
+    	display:flex;
+    	justify-content: center;
+    	align-items: center;
+    }
+
+    .actionMsg .img {
+    	margin-left:5px;
+    	margin-right: 5px;
+    }
+
+    .creditsBlock, .creditsBlockList {
+        display:flex;
+        flex-direction: column;
+    }
+    .creditsBlock {
+        margin-top:10px;
+        margin-bottom: 10px;
+    }
+
+    .creditsBlockTitle {
+        font-weight:bold;
+        color:rgb(255, 255, 0);
+    }
+
+    #credits a {
+        color:white !important;
+    }
+
+    .horizontal {
+    	background-image: url("../assets/img/snake/body_h.png");
+        background-size: contain;
+        background-repeat: no-repeat;
+    }
+    .vertical {
+    	background-image: url("../assets/img/snake/body_v.png");
+        background-size: contain;
+        background-repeat: no-repeat;
+    }
+
+    .angle {
+        background-size: contain;
+        background-repeat: no-repeat;
+    }
+
+    #levelSetting {max-height:700px; overflow-y: scroll;}
+    #levelSetting h3 {position:fixed; z-index: 1;}
+    #levelSetting h3:before {content: "";
+        width: 220px;
+        height: 50px;
+        background-color: rgb(100, 88, 66);
+        z-index: -1;
+        position: absolute;
+        display: block;
+        top: -28px;
+        left: -10px;}
+    #levelSetting > p:first-of-type {
+        margin-top:55px;
+    }
+    #levelSetting .editButton {background-image: url("../assets/img/editor/edit.png"); cursor: pointer; background-repeat: no-repeat;}
+    #editorLeaderboardBlock > label {font-size: 15px;}
+    #editorTools .removeButton {background-image: url("../assets/img/editor/remove.png"); background-repeat: no-repeat;}
+    #editorTools .newButton {background-image: url("../assets/img/editor/new_file.png"); background-repeat: no-repeat;}
+    #editorTools .saveButton {background-image: url("../assets/img/editor/save.png"); background-repeat: no-repeat;}
+    #editorTools .loadButton {background-image: url("../assets/img/editor/load.png"); background-repeat: no-repeat;}
+    #editorTools .eraseButton {background-image: url("../assets/img/editor/delete.png"); background-repeat: no-repeat;}
+
+   	.LtU {background-image: url("../assets/img/snake/body_a.png"); background-repeat: no-repeat;}
+    .RtU {background-image: url("../assets/img/snake/body_a.png"); transform: scaleX(-1); background-repeat: no-repeat;}
+    .UtR {background-image: url("../assets/img/snake/body_a.png"); transform: scale(1); background-repeat: no-repeat;}
+   	.RtD {background-image: url("../assets/img/snake/body_a2.png"); background-repeat: no-repeat;}
+    .LtD {background-image: url("../assets/img/snake/body_a2.png"); transform: scaleX(-1); background-repeat: no-repeat;}
+    .UtL {background-image: url("../assets/img/snake/body_a.png"); transform: scaleX(-1); background-repeat: no-repeat;}
+    .DtL {background-image: url("../assets/img/snake/body_a2.png");}
+    .DtR {background-image: url("../assets/img/snake/body_a2.png"); transform: scaleX(-1); background-repeat: no-repeat;}

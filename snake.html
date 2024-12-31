@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="icon" href="./assets/img/snake_icon.ico">
+    <title id="pageTitle">Snake</title>
+    <link rel="stylesheet" href="./src/snake.css">
+</head>
+
+<body>
+    <div id="panel">
+        <div id="intro">
+            <h1>Welcome to the Snake</h1>
+            <h2>Main Menu</h2>
+            <div class="customMenu" id="mainMenu">
+            	<p class="playButton">Play</p>
+            	<p class="optionsButton">Options</p>
+            	<p class="dataButton">Game Data</p>
+            	<p class="editorButton">Editor</p>
+            	<p class="creditsButton">Credits</p>
+            </div>
+            <p class="instruction">Press <span class="controlInfo left_button">q</span> & <span class="controlInfo right_button">s</span> to navigate in the option list</p>
+            <p class="actionMsg">Press <span class="controlInfo pause_button">space</span> to select an option</p>
+        </div>
+        <div id="playPanel" class="hide">
+        	<div id="levelSelectBlock">
+            <h2>Select Level</h2>
+            <div id="previewPlaygrounds">
+            </div>
+            <p class="instruction">
+				<span>Press <span class="controlInfo left_button">q</span> & <span class="controlInfo right_button">s</span> to navigate in the level list</span>
+				<span>Press <span class="controlInfo pause_button">space</span> to start the game</span>
+			</p>
+        	</div>
+			<p class="actionMsg">Press <span class="controlInfo cancel_button">ESC</span> to return to main menu</p>
+        </div>
+        <div id="optionsPanel" class="hide">
+        	<h2>Game Options</h2>
+        	<h3>Sound</h3>
+        	<div class="gameOption editButton"><span>Music volume</span><div id="musicVolume" class="volumebarbg"><div class="volumebar"></div></div>
+				<div id="musicVolInfo" >
+					<div>Press <span class="controlInfo left_button">q</span> to decrease the music volume</div> 
+					<div>Press <span class="controlInfo right_button">s</span> to increase the music volume</div>
+				</div>
+			</div>
+        	<div class="gameOption editButton"><span>Sound volume</span><div id="soundVolume" class="volumebarbg"><div class="volumebar"></div></div>
+				<div id="soundVolInfo" >
+					<div>Press <span class="controlInfo left_button">q</span> to decrease the sound volume</div>
+					<div>Press <span class="controlInfo right_button">s</span> to increase the sound volume</div>
+				</div>
+			</div>
+        	<h3>Controls</h3>
+        	<div id="edit_left_button" class="gameOption editButton" ><span>Turn Left</span><span class="controlInfo left_button">q</span></div>
+        	<div id="edit_right_button" class="gameOption editButton" ><span>Turn Right</span><span class="controlInfo right_button">s</span></div>
+        	<div id="edit_info_button" class="gameOption editButton" ><span>Show/hide side panels</span><span class="controlInfo info_button">d</span></div>
+        	<div id="edit_space_button" class="gameOption editButton" ><span>Play/pause</span><span class="controlInfo pause_button">space</span></div>
+        	<p class="actionMsg nav">Press <span class="controlInfo left_button">q</span> & <span class="controlInfo right_button">s</span> to navigate in the option list</p>
+        	<p class="actionMsg confirm">Press <span class="controlInfo pause_button">space</span> to edit an option</p>
+			<p class="actionMsg restore">Press <span class="controlInfo restore_button">a</span> to restore default controls</p>
+        	<p class="actionMsg close">Press <span class="controlInfo cancel_button">esc</span> to close the options menu</p>
+        	<p class="actionMsg cancel">Press <span class="controlInfo cancel_button">esc</span> to return to the options menu</p>
+        	<div id="editScreen" class="hide">
+        		<div class="buttonInfo">
+        			<span>Current Button : </span><span id="editScreenSample" class="controlInfo"></span>
+        		</div>
+        		<span>Press a key to assign a new button</span>
+        		<div class="buttonInfo">
+				<span>Press <span class="controlInfo restore_button">a</span> to restore default control for <span id="editScreenControl"></span> button</span>
+        		<span>Press <span class="controlInfo cancel_button">esc</span> to cancel the assignment</span>
+        		</div>
+        	</div>
+        </div>
+        <div id="outro" class="hide">
+            <h1>Game Over</h1>
+            <p>Your Score : <span id="result"></span></p>
+            <p id="resultHighscore">Congratulations ! You beat your highscore</p>
+            <p id="unlockMsg"></p>
+            <div id="leaderboard">
+            	<h2 id="leaderboardTitle">Leaderboard</h2>
+            	<div id="leaderboardHeader">
+            		<div>#</div>
+            		<div>Name</div>
+            		<div>Score</div>
+            	</div>
+            	<div id="scoreList">
+            		<div class="scoreItem">
+            		</div>
+            	</div>
+            	<div id="enterNameAction" class="hide">
+            		<p class="actionMsg">Enter your name in the leaderboard.</p>
+            		<p class="actionMsg">Press <span class="controlInfo pause_button">space</span> to confirm your name</p>
+        		</div>
+            </div>
+            <p id="replayAction" class="actionMsg">Press <span class="controlInfo pause_button">space</span> to restart the game</p>
+        </div>
+        <div id="pause" class="hide">
+        	<h1>Pause</h1>
+        	 <div class="customMenu" id="pauseMenu">
+            	<p class="resumeButton">Resume</p>
+            	<p class="optionsButton">Options</p>
+            	<p class="mainButton">Main menu</p>
+            </div>
+            <p class="instruction">Press <span class="controlInfo left_button">q</span> & <span class="controlInfo right_button">s</span> to navigate in the option list</p>
+        	<p class="actionMsg">Press <span class="controlInfo pause_button">space</span> to select an option</p>
+        </div>
+        <div id="credits" class="hide">
+        	<h1>Credits</h1>
+        	<h2>Sounds</h2>
+        	<div class="creditsBlock">
+        		<div class="creditsBlockTitle">Blizzard Entertainment</div>
+				<div class="creditsBlockList">
+					<span><b>From the video game Warcraft 3 : Reforged</b></span>
+					<span>Devour</span>
+    				<span>RockHeavyBashFlesh1</span>
+    				<span>WingedSerpentDeath</span>
+    				<span>ThunderClapCaster</span>
+					<span>PolymorphDone</span>
+					<span>HolyBolt</span>
+					<span>MetalHeavySliceFlesh1</span>
+					<span>PurgeTarget1</span>
+					<span>BuildingDeathSmallHuman3</span>
+				</div>
+
+        	</div>
+        	<div class="creditsBlock">
+        		<div class="creditsBlockTitle">From pixabay.com</div>
+        		<div class="creditsBlockList">
+					<span><b>moodmode</b> - <a href="https://pixabay.com/fr/music/les-dessins-animes-song-of-jungle-155814/">Song of Jungle</a></span>
+					<span><b>Pixabay </b> - <a href="https://pixabay.com/fr/sound-effects/short-crowd-cheer-6713/">Short Crowd Cheer</a></span>
+				</div>
+        	</div>
+        	<h2>Image</h2>
+        	<div>
+        		<div class="creditsBlockTitle">From pixabay.com</div>
+				<span><b>Clker-Free-Vector-Images</b> - <a href="https://pixabay.com/fr/vectors/bois-modèle-grain-naturel-ligne-24490/">Bois Modèle Grain</a></span>
+			</div>
+			<p class="actionMsg close">Press <span class="controlInfo cancel_button">esc</span> to close the credits</p>
+        </div>
+        <div id="gameData" class="hide">
+        	<h1>Game Data</h1>
+        	<div class="customMenu" id="dataMenu">
+        	<div id="dataMsg"></div>
+        	<h2>Import game data</h2>
+        	<p class="importLevelButton dataOption">Import custom levels</p>
+        	<h2>Export game data</h2>
+        	<p class="exportLevelButton dataOption">Export custom levels</p>
+        	</div>
+        	<p class="instruction">Press <span class="controlInfo left_button">q</span> & <span class="controlInfo right_button">s</span> to navigate in the option list</p>
+        	<p class="actionMsg close">Press <span class="controlInfo cancel_button">esc</span> to close the game data menu</p>
+        </div>
+    </div>
+    <div id="game">
+        <div id="score">
+        	<div id="stageInfo">
+        	<h3 id="stageName"></h3>
+        	<div id="objStage" class="hide">
+        		<h4>Objective : </h4>
+        		<p>Reach a score of <span id="objScore">0</span> <span id="objNextLevelBlock">to unlock the level <span id="objNextLevel"></span></span></p>
+        		<hr>
+        	</div>
+            <p>High Score : <span id="highScore">0</span></p>
+            <p>Score : <span id="currentScore">0</span></p>
+         </div>
+         <div id="levelSetting" class="hide">
+         	<h3>Level Settings</h3>
+            <p><span>Custom Level ID : </span><span class="displayEditorData" id="displayLevelID"></span></p>
+            <p><span>Title : <span class="displayEditorData" id="displayTitle"></span></span> <span id="editTitle" class="img editButton"></span></p>
+            <input class="hide" type="text" id="stageTitle" placeholder="Title"></input>
+            <p><span>Playground size : <span class="displayEditorData" id="displayPlaygroundSizeX"></span>x<span class="displayEditorData" id="displayPlaygroundSizeY"></span></span> <span id="editSize" class="img editButton"></span></p>
+            <div id="playgroundSizeXBlock" class="hide"><span>X : </span><input type="number" name="playground size X" id="playgroundSizeX" placeholder="5" min="5" max="30"></input>
+			<p class="limitMsg">min: 0 | max : 30</p></div>
+            <div id="playgroundSizeYBlock" class="hide"><span>Y : </span><input type="number" name="playground size Y" id="playgroundSizeY" placeholder="5" min="5" max="30"></input>
+			<p class="limitMsg">min: 0 | max : 30</p></div>
+			<p><span>Playground background color : <span class="displayEditorData" id="displayPlaygroundBgColor"></span></span> <span id="editPlaygroundBgColor" class="img editButton"></span></p>
+            <div id="playgroundBgColorBlock" class="hide"><input type="color" id="playgroundBgColor" name="playground background color" value="#ffffff" ></div>
+            <p><span>Next Level ID : <span class="displayEditorData" id="displayNextLevelID">N/A</span></span> <span id="editNextLevelID" class="img editButton"></span></p>
+            <select class="hide" id="nextLevelID">
+                <option value="N/A">Level List</option>
+            </select>
+            <hr>
+            <p><span>Score Limit : <span class="displayEditorData" id="displayLimitScore"></span></span> <span id="editLimitScore" class="img editButton"></span></p>
+            <div id="limitScoreBlock" class="hide"><input type="number" id="limitScore" placeholder="0" name="score limit" min="0"></input>
+			<p class="limitMsg">min: 0</p></div>
+			<p><span>Food Lifespan : <span class="displayEditorData" id="displayFoodLifespan"></span> <span class="displayEditorData"> sec.</span></span> <span id="editFoodLifespan" class="img editButton"></span></p>
+            <div id="editFoodLifespanBlock" class="hide"><input type="number" id="foodLifespan" placeholder="1" name="food lifespan" max="60" min="1"></input><span> sec.</span>
+			<p class="limitMsg">min: 1 | max: 60</p></div>
+            <p><span>Score before Bonus : <span class="displayEditorData" id="displayScoreBeforeBonus"></span></span> <span id="editScoreBeforeBonus" class="img editButton"></span></p>
+            <div id="scoreBonusBlock" class="hide"><input type="number" id="ScoreBeforeBonus" placeholder="0" name="score before bonus" min="0"></input>
+			<p class="limitMsg">min: 0</p></div>
+			<p><span>Bonus Lifespan : <span class="displayEditorData" id="displayBonusLifespan"></span> <span class="displayEditorData"> sec.</span></span> <span id="editBonusLifespan" class="img editButton"></span></p>
+            <div id="editBonusLifespanBlock" class="hide"><input type="number" id="bonusLifespan" placeholder="1" name="bonus lifespan" max="60" min="1"></input><span> sec.</span>
+			<p class="limitMsg">min: 1 | max: 60</p></div>
+            <p><span>Score before Wall : <span class="displayEditorData" id="displayScoreBeforeWall"></span></span> <span id="editScoreBeforeWall" class="img editButton"></span></p>
+            <div id="scoreWallBlock" class="hide"><input type="number" id="ScoreBeforeWall" placeholder="0" name="score before wall" min="0"></input>
+			<p class="limitMsg">min: 0</p></div>
+			<p><span>Temp. void Lifespan : <span class="displayEditorData" id="displayTmpVoidLifespan"></span> <span class="displayEditorData"> sec.</span> </span> <span id="editTmpVoidLifespan" class="img editButton"></span></p>
+            <div id="editTmpVoidLifespanBlock" class="hide"><input type="number" id="tmpVoidLifespan" placeholder="1" name="temp. void lifespan" max="60" min="1"></input><span> sec.</span>
+			<p class="limitMsg">min: 1 | max: 60</p></div>
+            <p><span>Leaderboard : <span class="displayEditorData" id="displayLeaderboard"></span></span> <span id="editLeaderboard" class="img editButton"></span></p>
+            <div id="editorLeaderboardBlock" class="hide"><label for="editorLeaderboard">Active leaderboard : </label><input type="checkbox" id="editorLeaderboard" value="tab"></div>
+            <hr>
+            <p><span>Snake initial size : <span class="displayEditorData" id="displaySnakeSize"></span></span> <span id="editSnakeSize" class="img editButton"></span></p>
+            <div id="snakeSizeBlock" class="hide"><input type="number" id="snakeSize" placeholder="2" name="snake size" min="2" max="10"></input>
+			<p class="limitMsg">min: 2 | max: 10</p></div>
+            <p><span>Snake initial direction : <span class="displayEditorData" id="displaySnakeDirection"></span></span> <span id="editSnakeDirection" class="img editButton"></span></p>
+            <select class="hide" id="snakeDirection">
+                <option>Direction</option>
+                <option value="Top">Top</option>
+                <option value="Left">Left</option>
+                <option value="Down">Down</option>
+                <option value="Right">Right</option>
+            </select>
+         </div>
+        </div>
+        <div style="position:relative;">
+        	<div id="editorMsg"></div>
+        	<div id="playground">
+        	</div>
+        	<div id="editorDirect">Press <span class="controlInfo cancel_button">esc</span> to quit the editor</div>
+    	</div>
+        <div id="info">
+        	<div id="gameInfo">
+    		<h3>Controls : </h3>
+    		<div class="elemBlock"><span class="controlInfo left_button">q</span><span>: Turn left</span></div>
+    		<div class="elemBlock"><span class="controlInfo right_button">s</span><span>: Turn right</span></div>
+    		<div id="infoControl" class="elemBlock"><span class="controlInfo info_button">d</span><span>: Show/hide side panels</span></div>
+    		<div class="elemBlock"><span class="controlInfo pause_button">space</span><span>: Play/pause</span></div>
+    		<hr>
+    		<h3>Elements</h3>
+    		<div class="elemObject elemBlock">
+    			<div class="elemObjectHeader"><span class="img food"></span><span>: Food</span></div>
+    			<div class="elemObjectInfo">Increase the score & the Snake length of 1.</div>
+    		</div>
+    		<div class="elemObject elemBlock">
+    			<div class="elemObjectHeader"><span class="img bonus"></span><span>: Bonus food</span></div>
+    			<div class="elemObjectInfo">Remove 1 wall randomly.</div>
+    		</div>
+    		<div class="elemObject elemBlock">
+    			<div class="elemObjectHeader"><span class="img wall"></span><span>: Wall</span></div>
+    			<div class="elemObjectInfo">Block the path of the Snake. Kill the Snake if he tries to go through.</div>
+    		</div>
+    		</div>
+    		<div id="editorTools" class="hide">
+    			<h3>Editor Menu</h3>
+            	<div class="elemBlock" id="newLevel" title="Generate a new level"><span class="img newButton"></span><span>: New level</span></div>
+            	<div class="elemBlock" id="saveLevel" title="Save the current level"><span class="img saveButton"></span><span>: Save level</span></div>
+            	<div class="elemBlock" id="loadLevel" title="Load a saved level"><span class="img loadButton"></span><span>: Load level</span></div>
+            	<select class="hide" id="levelSelect">
+                	<option>Level List</option>
+            	</select>
+            	<div class="elemBlock" id="eraseLevel" title="Erase the current level"><span class="img eraseButton"></span><span>: Erase level</span></div>
+            	<hr>
+    			<h3>Game Elements</h3>
+            	<div class="elemBlock" id="removeElem" title="Remove element from an used case"><span class="img removeButton"></span><span>: Remove element</span></div>
+    			<div class="elemBlock" id="startElem" title="Add the snake start position in a case"><span class="img headDown"></span><span>: Snake head</span></div>
+    			<div class="elemBlock" id="voidElem" title="Add a void case in a case"><span class="img void"></span><span>: Void case</span></div>
+    			<div class="elemBlock" id="tmpVoidElem" title="Add a tmpvoid case in a case"><span class="img editortmpvoid"></span><span>: Temporary void case</span></div>
+    		</div>
+    	</div>
+    </div>
+	<input type="file" class="hide" id="importFile">
+    <script type="text/javascript" src="./src/snake.js"></script>
+</body>
+
+</html>
