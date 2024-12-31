@@ -24,12 +24,12 @@ It's a personal project done during the year 2024.
 
 ## Screenshots
 
-![Stage 1](./assets/img/media/screenshot1.PNG "Stage 1")
+![Stage 1](./assets/img/media/Screenshot1.png "Stage 1")
 
-![Leaderboard](./assets/img/media/screenshot2.PNG "Leaderboard")
+![Leaderboard](./assets/img/media/Screenshot2.png "Leaderboard")
 
-![Stage 2](./assets/img/media/screenshot3.PNG "Stage 2")
+![Stage 2](./assets/img/media/Screenshot3.png "Stage 2")
 
-![Snake Editor](./assets/img/media/screenshot4.PNG "Snake Editor")
+![Snake Editor](./assets/img/media/Screenshot4.png "Snake Editor")
 
-![Level Selection](./assets/img/media/screenshot5.PNG "Level Selection")
+![Level Selection](./assets/img/media/Screenshot5.png "Level Selection")
