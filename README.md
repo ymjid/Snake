@@ -15,6 +15,11 @@ It's a personal project done during the year 2024.
 
 ## Installation 
 
+1) Download the zip of this repo
+2) Extract the zip wherever you want
+3) Open the extracted folder
+4) Open the file `snake.html` with your browser
+
 ## Features
 
 - Customizable controls
